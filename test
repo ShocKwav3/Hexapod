@@ -1,0 +1,65 @@
+from machine import Pin, SoftI2C
+from time import sleep, ticks_us
+
+from servo import Servos
+from transitions import Transitions
+
+
+sda = Pin(3)
+scl = Pin(4)
+
+i2c = SoftI2C(sda=sda, scl=scl)
+servo = Servos(i2c=i2c)
+
+startTime = ticks_us()
+duration = 3 * 1000000
+angle = 0
+targetAngle = 90
+
+while (ticks_us() - startTime) < duration:
+    newValue = Transitions().ease_in_out_sine(
+      current_time=ticks_us() - startTime,
+      start_value=angle,
+      change_in_value=targetAngle-angle,
+      duration=duration
+    )
+
+    angle = newValue
+    servo.position(index=2,degrees=angle)
+
+    sleep(0.005)
+
+    print('Value => ', newValue)
+
+servo.position(index=2,degrees=0)
+
+
+from machine import Pin, SoftI2C
+from time import sleep
+
+from servo import Servos
+
+
+sda = Pin(3)
+scl = Pin(4)
+
+rightServos = [0,1,2,5,6,7,13,14,15]
+leftServos = [0,1,2,5,6,7,13,14,15]
+
+i2c = SoftI2C(sda=sda, scl=scl)
+servoRight = Servos(i2c=i2c,address=0x40)
+servoLeft = Servos(i2c=i2c,address=0x41)
+
+for i in rightServos:
+    servoRight.setAngle(index=i, angle=90, transition='easeInOutSine')
+    #servoRight.release(index=i)
+    servoRight._currentAngle=0
+    sleep(1)
+
+for j in leftServos:
+    servoLeft.setAngle(index=j, angle=90, transition='easeInOutSine')
+    #servoLeft.release(index=j)
+    servoLeft._currentAngle=0
+    sleep(1)
+
+

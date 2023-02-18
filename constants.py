@@ -1,0 +1,34 @@
+class Constants:
+    RIGHT = 'RIGHT'
+    LEFT = 'LEFT'
+
+    LEG_NAME = 'LEG_NAME'
+    I2C_ADDRESS = 'I2C_ADDRESS'
+    JOINT_NAME = 'JOINT_NAME'
+    CHANNEL = 'CHANNEL'
+    DEGREES_TO_ADJUST = 'DEGREES_TO_ADJUST'
+    ACTIVITIES = 'ACTIVITIES'
+    INVERTED = 'INVERTED'
+    ANGLES = 'ANGLES' #to be gone
+    STAND = 'STAND'
+    SWING = 'SWING'
+    STANCE = 'STANCE'
+
+    SDA = 'SDA'
+    SCL = 'SCL'
+
+    EASE_IN_OUT_SINE = 'easeInOutSine'
+    EASE_IN_CUBIC = 'easeInCubic'
+
+    LEG_RIGHT_A = 'LEG_RIGHT_A'
+    LEG_RIGHT_B  = 'LEG_RIGHT_B'
+    LEG_RIGHT_C = 'LEG_RIGHT_C'
+    LEG_LEFT_D = 'LEG_LEFT_D'
+    LEG_LEFT_E = 'LEG_LEFT_E'
+    LEG_LEFT_F = 'LEG_LEFT_F'
+
+    COXA = 'COXA'
+    FEMUR = 'FEMUR'
+    TIBIA = 'TIBIA'
+
+
