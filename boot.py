@@ -1,9 +1,10 @@
 # This file is executed on every boot (including wake-boot from deepsleep)
-#import esp
-#esp.osdebug(None)
+
 import webrepl
 import network
 import time
+
+from configs.secretConfigs import WiFi_ssid, WiFi_password
 
 def connectToWiFi(ssid, password):
     station = network.WLAN(network.STA_IF)
@@ -23,5 +24,6 @@ def connectToWiFi(ssid, password):
     print('Network connection: ', station.isconnected(), '\nNetwork config:', station.ifconfig())
 
 time.sleep(1)
-connectToWiFi('ssidOfAny2.4ghzWifi', 'wifiPassWord')
+connectToWiFi(WiFi_ssid, WiFi_password)
+
 webrepl.start()
